@@ -1,0 +1,22 @@
+body {
+    background-image: url("tweed.jpg"); 
+}
+.NetFlix{
+    height:150px;
+    width:100%;
+    position: relative;
+}
+.gameShow{
+    height:100px;
+    width:150px;
+    position: absolute;
+    right: 300px;
+    top: 100px;
+}
+
+.top-buffer{
+    margin-top: 150px;
+}
+.img-responsive{
+    margin:0 auto;
+}
