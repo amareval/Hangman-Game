@@ -114,11 +114,17 @@
       
       // Setting array values to show on the letters guessed
       document.querySelector(".lettersGuess").innerHTML = guess;
+      
       //Compare the Letters guessed vs the current word using a loop
 
       for (var i = 0 ; i < guess.length ; i++)
-      console.log(theShow.indexOf(guess[i]));
-      if 
+      if (theShow.indexOf(guess[i]) > -1) {
+        console.log(theShow.indexOf(guess[i]));
+        console.log(theShow.indexOf(guess[i]) >= -1);
+        alert("I'm rick james bitch!");
+      }
+      else
+      alert("Not rick James bitch!");
 
     };
 
