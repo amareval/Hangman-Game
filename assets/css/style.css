@@ -14,9 +14,15 @@ body {
     top: 100px;
 }
 
-.top-buffer{
+.top-border{
     margin-top: 150px;
+}
+.top-buffer{
+    margin-top: 20px;
 }
 .img-responsive{
     margin:0 auto;
+}
+.hangman{
+    color: aliceblue;
 }

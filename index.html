@@ -8,9 +8,7 @@
     <title>Hangman Shows!</title>
   </head>
 
-<script>
-   
-</script>
+
   <body class="body">
     <container class="container-fluid">
         <div class="row">
@@ -25,20 +23,20 @@
 
             </div>
         </div>
-        <div class="row top-buffer">
+        <div class="row top-border">
             <div class="col-md-2"></div>
             <div class="col-md-4 float-left netfliximg">
 
             </div>
-            <div clas="col-md-4 hangman">
+            <div class="col-md-4 hangman">
               <div>Are you still watching? Press any key to get started?</div>
-              <div>Wins</div>
-              <div>Current Word</div>
-              <div></div>
-              <div>Number of Guesses Remaining</div>
-              <div></div>
-              <div>Letters guessed</div>
-              <div id="lettersGuess"></div>
+              <div class="top-buffer">Wins</div>
+              <div class="top-buffer">Current Word</div>
+              <div class="top-buffer theShow"></div>
+              <div class="top-buffer ">Number of Guesses Remaining</div>
+              <div class="top-buffer guessRemaining"> </div>
+              <div class="top-buffer numberLetterGuess">Letters guessed</div>
+              <div id="lettersGuess top-buffer" class="lettersGuess"></div>
             </div>
             <div class="col-md-2"></div>
         </div>
@@ -46,3 +44,85 @@
     </container>
   </body>
 </html>
+
+<script>
+
+
+    // Creates an array that lists out all of the options (Shows in the hangman game).
+    var tvShows = ["narcos", "stranger things", "peaky blinders", "mindhunter"];
+    
+    // array of user guesses from the event key of pressing the keyboard
+    var guess = [];
+
+    
+    // Creating variables to hold the number of wins, losses, and ties. They start at 0.
+    var wins = 0;
+    var losses = 0;
+    var numbersLetterGuess = 12;
+    
+
+    // Pull the characters of the first show and put into theShow, we now have N A R C O S
+
+    var theShow = tvShows[0].split('');
+    console.log(theShow);
+
+    //Input this number of characters into the Current Word
+
+    var emptySpace = theShow.length
+
+
+    //Start game with key press / Guess counter is set to 12
+    document.querySelector(".guessRemaining").innerHTML = numbersLetterGuess;
+
+ //Defining how many _ are needed for the empty space
+    var emptySpaceLetters=[];
+
+    for (var i = 0; i < emptySpace; i++){
+      var emptySpaceVal = "_";
+    emptySpaceLetters.push(emptySpaceVal)
+    }
+    console.log(emptySpaceLetters);
+
+    document.querySelector(".theShow").innerHTML = (" " + emptySpaceLetters + " ");
+
+    //Start the game with a key press
+    document.onkeyup = function(event) {
+
+   
+    //Decreasing number of letter guesses / Game Loser alert
+    var guessRemaining = numbersLetterGuess--
+    document.querySelector(".guessRemaining").innerHTML = numbersLetterGuess;
+
+    /*
+    //Set current word as theShow
+
+    document.querySelector(".theShow").innerHTML = theShow;
+
+    */
+    if (guessRemaining == 0){
+      alert("GAME OVER LOSER");
+    }
+    
+
+    //On a key press, we add the variable keyPress to the array of guess
+      var keyPress = event.key
+      guess.push(keyPress);
+      // This is showing that the keys are being registered and the array is being built
+      console.log(keyPress);
+      console.log(guess);
+
+      
+      // Setting array values to show on the letters guessed
+      document.querySelector(".lettersGuess").innerHTML = guess;
+      //Compare the Letters guessed vs the current word using a loop
+
+      for (var i = 0 ; i < guess.length ; i++)
+      console.log(theShow.indexOf(guess[i]));
+      if 
+
+    };
+
+    
+
+ 
+    </script>
