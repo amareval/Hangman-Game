@@ -114,14 +114,21 @@
       
       // Setting array values to show on the letters guessed
       document.querySelector(".lettersGuess").innerHTML = guess;
-      
+
       //Compare the Letters guessed vs the current word using a loop
 
       for (var i = 0 ; i < guess.length ; i++)
       if (theShow.indexOf(guess[i]) > -1) {
-        console.log(theShow.indexOf(guess[i]));
-        console.log(theShow.indexOf(guess[i]) >= -1);
-        alert("I'm rick james bitch!");
+        /*console.log(theShow.indexOf(guess[i]));*/
+        console.log(theShow.indexOf(guess[i]) > -1);
+        var correctGuess = theShow.indexOf(guess[i]);
+        console.log(correctGuess);
+        var fillLetter = theShow[correctGuess]
+        console.log(fillLetter);
+        // adding the correct guesses to an array at correct position / getting this double word count
+        emptySpaceLetters.splice(correctGuess, 1 ,fillLetter);
+        console.log(emptySpaceLetters);
+        document.querySelector(".theShow").innerHTML = emptySpaceLetters;
       }
       else
       alert("Not rick James bitch!");
