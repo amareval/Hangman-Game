@@ -25,12 +25,12 @@
         </div>
         <div class="row top-border">
             <div class="col-md-2"></div>
-            <div class="col-md-4 float-left netfliximg">
+            <div class="col-md-4 float-left img-responsive netfliximg">
 
             </div>
             <div class="col-md-4 hangman">
               <div>Are you still watching? Press any key to get started?</div>
-              <div class="top-buffer">Wins</div>
+              <div class="top-buffer wins">Wins</div>
               <div class="top-buffer">Current Word</div>
               <div class="top-buffer theShow"></div>
               <div class="top-buffer ">Number of Guesses Remaining</div>
@@ -49,7 +49,7 @@
 
 
     // Creates an array that lists out all of the options (Shows in the hangman game).
-    var tvShows = ["narcos", "stranger things", "peaky blinders", "mindhunter"];
+    var tvShows = ["narcos", "stranger_things", "peaky_blinders", "mindhunter"];
     
     // array of user guesses from the event key of pressing the keyboard
     var guess = [];
@@ -61,80 +61,102 @@
     var numbersLetterGuess = 12;
     
 
-    // Pull the characters of the first show and put into theShow, we now have N A R C O S
+    // Set the Narcos Image
 
-    var theShow = tvShows[0].split('');
-    console.log(theShow);
-
-    //Input this number of characters into the Current Word
-
-    var emptySpace = theShow.length
+    var narcosImage = document.createElement("img");
+    narcosImage.setAttribute("src", "narcos-netflix.jpg");
+    narcosImage.setAttribute("class", "h-75 w-75");
+    document.querySelector(".netfliximg").appendChild(narcosImage);
 
 
     //Start game with key press / Guess counter is set to 12
     document.querySelector(".guessRemaining").innerHTML = numbersLetterGuess;
+
+    // Pull the characters of the first show and put into theShow, we now have N A R C O S
+
+    var theShow = tvShows[0].split('');
+      console.log(theShow);
+
+    //Input this number of characters into the Current Word
+
+    var emptySpace = theShow.length
 
  //Defining how many _ are needed for the empty space
     var emptySpaceLetters=[];
 
     for (var i = 0; i < emptySpace; i++){
       var emptySpaceVal = "_";
-    emptySpaceLetters.push(emptySpaceVal)
-    }
-    console.log(emptySpaceLetters);
+      emptySpaceLetters.push(emptySpaceVal)
+        }
+      console.log(emptySpaceLetters);
 
-    document.querySelector(".theShow").innerHTML = (" " + emptySpaceLetters + " ");
+    document.querySelector(".theShow").innerHTML = (emptySpaceLetters);
+
+
+
 
     //Start the game with a key press
     document.onkeyup = function(event) {
-
-   
-    //Decreasing number of letter guesses / Game Loser alert
-    var guessRemaining = numbersLetterGuess--
-    document.querySelector(".guessRemaining").innerHTML = numbersLetterGuess;
-
-    /*
-    //Set current word as theShow
-
-    document.querySelector(".theShow").innerHTML = theShow;
-
-    */
-    if (guessRemaining == 0){
-      alert("GAME OVER LOSER");
-    }
     
-
+    
     //On a key press, we add the variable keyPress to the array of guess
-      var keyPress = event.key
+    var keyPress = event.key
+    console.log(guess.indexOf(keyPress))
+      //If the key press by the user is the same we do nothing
+    if (guess.indexOf(keyPress) == -1){
       guess.push(keyPress);
+      //Decreasing number of letter guesses / Game Loser alert
+    var guessRemaining = numbersLetterGuess--
+      document.querySelector(".guessRemaining").innerHTML = numbersLetterGuess;
+        }
+      else{
+        
+      };
       // This is showing that the keys are being registered and the array is being built
       console.log(keyPress);
       console.log(guess);
-
       
       // Setting array values to show on the letters guessed
       document.querySelector(".lettersGuess").innerHTML = guess;
 
       //Compare the Letters guessed vs the current word using a loop
 
-      for (var i = 0 ; i < guess.length ; i++)
+      for (var i = 0 ; i < guess.length ; i++){
       if (theShow.indexOf(guess[i]) > -1) {
         /*console.log(theShow.indexOf(guess[i]));*/
-        console.log(theShow.indexOf(guess[i]) > -1);
+        /*console.log(theShow.indexOf(guess[i]) > -1);*/
         var correctGuess = theShow.indexOf(guess[i]);
-        console.log(correctGuess);
+        /*console.log(correctGuess);*/
         var fillLetter = theShow[correctGuess]
-        console.log(fillLetter);
-        // adding the correct guesses to an array at correct position / getting this double word count
+        /*console.log(fillLetter);*/
+        // adding the correct guesses to an array at correct position
         emptySpaceLetters.splice(correctGuess, 1 ,fillLetter);
-        console.log(emptySpaceLetters);
+        /*console.log(emptySpaceLetters);*/
         document.querySelector(".theShow").innerHTML = emptySpaceLetters;
       }
-      else
-      alert("Not rick James bitch!");
+      else {
+
+      }
+    }
+      
+
+      if (guessRemaining == 1){
+      alert("GAME OVER LOSER");
+        }
+       
+        if (emptySpaceLetters >= theShow){
+          console.log(emptySpaceLetters = theShow)
+          alert("Trapping Like a Narco! You WIN! (Migos Quote)")
+          wins++
+        }
+        // Set the win counter if the game is won
+        var html = 
+        "<p>Wins: " + wins + "</p>"
+        document.querySelector(".wins").innerHTML = html;
+
 
     };
-
+          
     
 
  
