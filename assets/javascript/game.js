@@ -1,5 +1,4 @@
 
-
     // Creates an array that lists out all of the options (Shows in the hangman game).
     var tvShows = ["narcos", "friends", "stranger_things", "stranger_things"];
     
@@ -270,6 +269,8 @@ if (wins == 2) {
     if (theShow.indexOf(guess[i]) > -1) {
       /*console.log(theShow.indexOf(guess[i]));*/
       /*console.log(theShow.indexOf(guess[i]) > -1);*/
+
+      // This is only providing the first index of the missing value. I need to get two values for both the first and second letter that exists in the word
       var correctGuess = theShow.indexOf(guess[i]);
       console.log(correctGuess = theShow.indexOf(guess[i]))
       console.log(correctGuess = theShow.lastIndexOf(guess[i]))
@@ -312,7 +313,3 @@ if (wins == 2) {
 
   }
   
-    
-    
-
- 
