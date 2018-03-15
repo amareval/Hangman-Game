@@ -242,7 +242,7 @@ if (wins == 2) {
   var numberLetterGuess = 12;
   document.querySelector(".guessRemaining").innerHTML = numbersLetterGuess;
 
-};
+
    //On a key press, we add the variable keyPress to the array of guess
    var keyPress = event.key
   console.log(guess.indexOf(keyPress))
@@ -266,28 +266,31 @@ if (wins == 2) {
     //Compare the Letters guessed vs the current word using a loop
 
     for (var i = 0 ; i < guess.length ; i++){
-    if (theShow.indexOf(guess[i]) > -1) {
-      /*console.log(theShow.indexOf(guess[i]));*/
-      /*console.log(theShow.indexOf(guess[i]) > -1);*/
+      if (theShow.indexOf(guess[i]) > -1) {
+        /*console.log(theShow.indexOf(guess[i]));*/
+        /*console.log(theShow.indexOf(guess[i]) > -1);*/
+        var correctGuess = theShow.indexOf(guess[i]);
+        console.log(correctGuess = theShow.indexOf(guess[i]))
+        console.log(correctGuess = theShow.lastIndexOf(guess[i]))
 
-      // This is only providing the first index of the missing value. I need to get two values for both the first and second letter that exists in the word
-      var correctGuess = theShow.indexOf(guess[i]);
-      console.log(correctGuess = theShow.indexOf(guess[i]))
-      console.log(correctGuess = theShow.lastIndexOf(guess[i]))
+        /*console.log(correctGuess);*/
+        var fillLetter  = theShow[correctGuess]
+        /*console.log(fillLetter);*/
+        // adding the correct guesses to an array at correct position
+        emptySpaceLetters.splice(correctGuess, 1 ,fillLetter);
 
-      /*console.log(correctGuess);*/
-      var fillLetter  = theShow[correctGuess]
-      /*console.log(fillLetter);*/
-      // adding the correct guesses to an array at correct position
-      emptySpaceLetters.splice(correctGuess, 1 ,fillLetter);
-
-      /*console.log(emptySpaceLetters);*/
-      document.querySelector(".theShow").innerHTML = emptySpaceLetters;
-    }
+        /*console.log(emptySpaceLetters);*/
+        document.querySelector(".theShow").innerHTML = emptySpaceLetters;
+      }
     else {
 
     }
   }
+
+  emptySpaceLetters.replaceChild(emptySpaceLetters);
+
+      /*console.log(emptySpaceLetters);*/
+      document.querySelector(".theShow").innerHTML = emptySpaceLetters;
 
     if (guessRemaining == 1){
     alert("GAME OVER LOSER");
@@ -309,7 +312,7 @@ if (wins == 2) {
       "<p>Wins: " + wins + "</p>"
       document.querySelector(".wins").innerHTML = html;
 
-    
+    };
 
   }
   
